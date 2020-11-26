@@ -1,6 +1,8 @@
 #ifndef myBank_h
 #define myBank_h
 #define bank_accounts 50
+#define FIRST_ACCOUNT 901
+#define LAST_ACCOUNT 950
 
 extern double bank[2][bank_accounts];
 

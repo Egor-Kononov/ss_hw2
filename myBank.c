@@ -2,7 +2,7 @@
 #include "myBank.h"
 #define SIZE 50
 #define FIRST_ACCOUNT 901
-
+#define LAST_ACCOUNT 950
 
 double bank[2][bank_accounts] = {0};
 
@@ -37,12 +37,12 @@ double deposit(int bankAccount, double amount){
 }
 
  double withdraw(int bankAccount, double withdraw){
-     double newBalance = -1;
+     double newBalance = -2;
      if(bank[0][bankAccount-FIRST_ACCOUNT]==1 && withdraw <= bank[1][bankAccount-FIRST_ACCOUNT] ){ 
         bank[1][bankAccount-FIRST_ACCOUNT]-= withdraw;
         newBalance = bank[1][bankAccount-FIRST_ACCOUNT];   
      }else if(bank[0][bankAccount-FIRST_ACCOUNT]==0){
-         newBalance = -2;
+         newBalance = -1;
      }
      return newBalance;
  }
@@ -51,7 +51,7 @@ double deposit(int bankAccount, double amount){
      if(bank[0][bankAccount-FIRST_ACCOUNT]==1){
          bank[0][bankAccount-FIRST_ACCOUNT]= 0;
          bank[1][bankAccount-FIRST_ACCOUNT]= 0;
-         printf("This account %d closed successfully!\n", bank_accounts);
+         printf("This account %d closed successfully!\n", bankAccount);
      }else
      {
          printf("error: this account already closed!\n");
