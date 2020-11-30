@@ -20,42 +20,30 @@ return account_number;
 }
 
 double balance(int bankAccount){
-    double current_balance = -1;
-    if(bank[0][bankAccount-FIRST_ACCOUNT]==1){
+    double current_balance;
         current_balance = bank[1][bankAccount-FIRST_ACCOUNT];
-    }
     return current_balance;
 }
 
 double deposit(int bankAccount, double amount){
-    double newBalance = -1;
-    if(bank[0][bankAccount-FIRST_ACCOUNT]==1){
         bank[1][bankAccount-FIRST_ACCOUNT] += amount;
-        newBalance =  bank[1][bankAccount-FIRST_ACCOUNT];
-    }
+        double newBalance =  bank[1][bankAccount-FIRST_ACCOUNT];
     return newBalance;
 }
 
  double withdraw(int bankAccount, double withdraw){
      double newBalance = -2;
-     if(bank[0][bankAccount-FIRST_ACCOUNT]==1 && withdraw <= bank[1][bankAccount-FIRST_ACCOUNT] ){ 
+     if(withdraw <= bank[1][bankAccount-FIRST_ACCOUNT] ){ 
         bank[1][bankAccount-FIRST_ACCOUNT]-= withdraw;
         newBalance = bank[1][bankAccount-FIRST_ACCOUNT];   
-     }else if(bank[0][bankAccount-FIRST_ACCOUNT]==0){
-         newBalance = -1;
      }
      return newBalance;
  }
 
  void close(int bankAccount){
-     if(bank[0][bankAccount-FIRST_ACCOUNT]==1){
          bank[0][bankAccount-FIRST_ACCOUNT]= 0;
          bank[1][bankAccount-FIRST_ACCOUNT]= 0;
-         printf("This account %d closed successfully!\n", bankAccount);
-     }else
-     {
-         printf("error: this account already closed!\n");
-     }
+         printf("Closed account number %d \n", bankAccount);
  }
 
  void interest(double inter){
@@ -69,7 +57,7 @@ double deposit(int bankAccount, double amount){
  void print(){
      for(int i = 0; i < SIZE; i++){
          if(bank[0][i]==1){
-             printf("account number: %d amount: %0.2lf\n", i+FIRST_ACCOUNT , bank[1][i]);
+             printf("The balance of account nuber %d is: %0.2lf\n", i+FIRST_ACCOUNT , bank[1][i]);
          }
      }
  }
@@ -81,6 +69,5 @@ double deposit(int bankAccount, double amount){
              bank[1][i]=0;
          }
      }
-     printf("all accounts are closed\n");
  }
 
